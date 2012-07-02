@@ -7,13 +7,14 @@ class Course < ActiveRecord::Base
   MERCHANT_KEY = 'zKSnCdZXULVoRQ6Vf77JwQ'
 
   def to_google_product
-    hash = {}
-    hash[:name] = self.name
-    hash[:description] = self.name
-    hash[:price] = self.price
-    hash[:quantity] = 1
-    hash[:currency] = 'USD'
-    hash[:regular_shipping] = 0
-    hash
+    require 'debugger'; debugger
+    #hash = {}
+    #hash[:name] = self.name
+    #hash[:description] = self.name
+    #hash[:price] = self.price
+    #hash[:quantity] = 1
+    #hash[:currency] = 'USD'
+    #hash[:regular_shipping] = 0
+    #hash
   end
 end
