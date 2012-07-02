@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead:
-gem 'rails',  '3.2.1'
+gem 'rails',  '3.2.6'
 
 gem 'sqlite3'
 gem 'mysql'
@@ -38,7 +38,6 @@ gem "backbone-on-rails"
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
 # To use simple form
 gem "simple_form"
@@ -63,6 +62,6 @@ group :test do
   gem 'cucumber-rails'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'simplecov'
 end
-
-gem 'debugger', :group => [:test, :development]
+gem 'debugger'

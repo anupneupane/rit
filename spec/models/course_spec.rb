@@ -27,6 +27,18 @@ describe Course do
         end
     end
   end
+  context "Google Cart" do
+    it "should return a valid hash for Google Shopping Cart" do
+      expected_hash = {
+      :name => 'Course1',
+      :description => 'Course1',
+      :price => 549,
+      :quantity => 1,
+      :currency => 'USD',
+      :regular_shipping => 0 }
+      Course.make(@valid_attributes).to_google_product.should == expected_hash
+    end
+  end
 end
 
 
