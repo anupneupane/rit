@@ -6,12 +6,13 @@ describe CoursesController do
     :name => 'Test Course', 
     :price => 100
     }
+    @update_options = {"course"=> { "name" => 'Updated Course', "price" => "1000"}, "commit"=>"Update Course" }
   end
 
   context "Index" do
       let(:courses) { [Course.make] }
 
-    before(:each) do
+    before do
       get :index
     end
 
@@ -25,7 +26,7 @@ describe CoursesController do
   action_templates.each do |action, template|
     context action do
       let(:course) { Course.make!(@valid_attributes) }
-      before(:each)  { get action, 'id' => course.id }
+      before  { get action, 'id' => course.id }
       it "renders #{template}" do
         response.should render_template template 
       end
@@ -34,7 +35,7 @@ describe CoursesController do
     context "Record Not Found For Edit" do
       it "should raise record not found error when invalid id passed" do
          assert_raises (ActiveRecord::RecordNotFound) do
-          get :edit, 'id' => Course.all.map(&:id).max + 1 
+          get :edit, 'id' => -1 
          end
       end
     end
@@ -58,11 +59,11 @@ describe CoursesController do
       end
     end
 
-    context "Update a Course" do
-      let(:course) { Course.make!(@valid_attributes) }
-      it "should modify the record accordingly" do
-        debugger
-         post 'update',{"course"=>{"name"=>"Updated Course", "price"=>"10000"}, "commit"=>"Update Course", "id"=>course.id}.should_not == course
+    context "Updating a Course" do
+      let(:course) { Course.create!(@valid_attributes) }
+      before  { post('update', {"course"=> { "name" => 'Updated Course', "price" => "1000"}, "commit"=>"Update Course", "id" => course.id })}
+      it "should modify the record correctly" do
+       Course.find(course.id).name.should == @update_options['course']['name']
       end
     end
 end
