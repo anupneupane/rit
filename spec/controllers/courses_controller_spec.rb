@@ -61,9 +61,10 @@ describe CoursesController do
 
     context "Updating a Course" do
       let(:course) { Course.create!(@valid_attributes) }
-      before  { post('update', {"course"=> { "name" => 'Updated Course', "price" => "1000"}, "commit"=>"Update Course", "id" => course.id })}
+      before  { post('update', @update_options.merge!({"id" => course.id }))}
       it "should modify the record correctly" do
        Course.find(course.id).name.should == @update_options['course']['name']
       end
-    end
+
+  end
 end
