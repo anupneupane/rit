@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :courses, :through => :registrations
   has_many :registrations
+  has_and_belongs_to_many :roles
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -26,5 +27,9 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
+  
+  def role?(role)
+      return !!self.roles.find_by_name(role.to_s.camelize)
+  end 
 end
 
