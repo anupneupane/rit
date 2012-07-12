@@ -21,6 +21,7 @@ describe User do
     end
   end
   context "Authentication" do
+<<<<<<< HEAD
     it "should be able to login eithe their username or password" do
       @user = User.create!(@valid_attributes)
       conditions_by_username = {"username" => "Tester Khan"}
@@ -32,27 +33,17 @@ describe User do
       User.find_first_by_auth_conditions(conditions_by_login_email).should == @user
       User.find_first_by_auth_conditions(conditions_by_username).should == @user
     end
-  end
-  
-  context " Roles" do
-    it "should return the correct Role" do
-      @role = Role.make!
-      @user = User.make.with_role(@role)
-      @user.roles.should == [@role]
+=======
+    it "should find users by their emails or their usernames" do
+      email_warden_conditions = {"login"=>"test0@rit.com"}
+      username_warden_conditions = {"login" => "Tester Khan"}
+      u = User.make(@valid_attributes)
+      User.find_first_by_auth_conditions(email_warden_conditions).should == u 
+      User.find_first_by_auth_conditions(username_warden_conditions).should == u 
+
     end
-    
-    it "should return false when checking for a given role that does not exist" do
-      @user = User.make(@valid_attributes)
-      @role = Role.make!
-      @user.role?(@role).should be_false
-    end
-    
-    it "should return true when checking for a given role that exists" do
-      @role = Role.make!
-      @user = User.make.with_role(@role)
-      puts @user.roles
-      @user.role?(@role).should be_true
-    end
+
+>>>>>>> f18f2e7f6a3393e5c395553fd9e48d16ecf6e3ed
   end
 end
 

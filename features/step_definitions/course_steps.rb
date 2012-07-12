@@ -1,4 +1,3 @@
-require 'debugger'; debugger
 Given /^a course that is "(.*?)"$/ do |course|
   @course = Course.make(:name => course)
 end

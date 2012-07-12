@@ -2,6 +2,7 @@ Rit::Application.routes.draw do
   mount Forem::Engine, :at => "/forums"
   #mount Forem::Engine => '/', :constraints => { :subdomain => 'forum' }
   devise_for :users
+  resources :users
   resources :courses
 
   # The priority is based upon order of creation:

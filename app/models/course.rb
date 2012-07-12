@@ -3,6 +3,7 @@ class Course < ActiveRecord::Base
   has_many :users, :through => :registrations
   has_many :lessons
   validates_presence_of :name, :price, :message => "can't be blank"
+  attr_accessible :name, :price
   MERCHANT_ID = 368578617175864
   MERCHANT_KEY = 'zKSnCdZXULVoRQ6Vf77JwQ'
 

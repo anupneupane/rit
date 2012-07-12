@@ -60,12 +60,11 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        puts @course.update_attributes
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        #format.html { render action: "edit" }
+        #format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
   end

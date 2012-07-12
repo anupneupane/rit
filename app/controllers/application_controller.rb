@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def ilink_to(*args, &block)
     if block_given?
       icon = args[0]
@@ -22,7 +21,7 @@ module ApplicationHelper
       "<a #{href_attr}#{tag_options}><i class=\"icon-#{icon}\"></i> #{ERB::Util.html_escape(name || url)}</a>".html_safe
     end
   end
-
+    
   # TODO:
 
   # def ilink_to_unless
