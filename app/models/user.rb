@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   end
   
   def role?(role)
-      return !!self.roles.find_by_name(role.to_s.camelize)
+      
+      return !!self.roles.include?(role)
   end 
 end
 

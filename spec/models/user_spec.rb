@@ -33,5 +33,26 @@ describe User do
       User.find_first_by_auth_conditions(conditions_by_username).should == @user
     end
   end
+  
+  context " Roles" do
+    it "should return the correct Role" do
+      @role = Role.make!
+      @user = User.make.with_role(@role)
+      @user.roles.should == [@role]
+    end
+    
+    it "should return false when checking for a given role that does not exist" do
+      @user = User.make(@valid_attributes)
+      @role = Role.make!
+      @user.role?(@role).should be_false
+    end
+    
+    it "should return true when checking for a given role that exists" do
+      @role = Role.make!
+      @user = User.make.with_role(@role)
+      puts @user.roles
+      @user.role?(@role).should be_true
+    end
+  end
 end
 

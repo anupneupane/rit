@@ -64,5 +64,6 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'simplecov'
+  gem 'brakeman'
 end
 gem 'debugger'
