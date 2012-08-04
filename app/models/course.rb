@@ -18,3 +18,6 @@ class Course < ActiveRecord::Base
     hash
   end
 end
+
+
+# This is the secod comment
