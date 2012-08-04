@@ -18,3 +18,6 @@ class Course < ActiveRecord::Base
     hash
   end
 end
+
+
+# This sis a new comment to demostrate the merge feature
